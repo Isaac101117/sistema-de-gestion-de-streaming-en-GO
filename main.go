@@ -1,13 +1,13 @@
+// Autor: Isaac Hernandez
+// Fecha: 15 de diciembre de 2025
+// Descripción: Sistema de Gestion de streaming.
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
+import "strings"
+import "time"
 
-// 1. DEFINICIÓN DE ESTRUCTURAS (Sintaxis básica)
-// En lugar de clases, Go usa 'structs' para definir modelos de datos.
-type Pelicula struct {
-	Titulo    string
-	Categoria string
-	Duracion  int // en minutos
+func main() {
+	fmt.Println("Iniciando Sistema de Streaming GoStream...")
+	// Aquí irá la lógica de los módulos
+}
