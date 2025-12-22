@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GoStream Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background: #6a11cb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>🎬 GoStream Dashboard</h1>
+        <p>Gestión de Base de Datos SQL con Go</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="card p-3">
+                    <h5>🎥 Nueva Película</h5>
+                    <form action="/add-movie" method="POST">
+                        <input type="text" name="nombre" class="form-control mb-2" placeholder="Nombre" required>
+                        <input type="text" name="genero" class="form-control mb-2" placeholder="Género">
+                        <input type="number" name="duracion" class="form-control mb-2" placeholder="Duración (min)">
+                        <textarea name="sinopsis" class="form-control mb-2" placeholder="Sinopsis"></textarea>
+                        <button type="submit" class="btn btn-primary w-100">Guardar Película</button>
+                    </form>
+                </div>
+
+                <div class="card p-3">
+                    <h5>📺 Nueva Serie</h5>
+                    <form action="/add-serie" method="POST">
+                        <input type="text" name="nombre" class="form-control mb-2" placeholder="Nombre" required>
+                        <input type="text" name="genero" class="form-control mb-2" placeholder="Género">
+                        <div class="row">
+                            <div class="col"><input type="number" name="temporadas" class="form-control mb-2"
+                                    placeholder="Temp."></div>
+                            <div class="col"><input type="number" name="capitulos" class="form-control mb-2"
+                                    placeholder="Caps."></div>
+                        </div>
+                        <textarea name="sinopsis" class="form-control mb-2" placeholder="Sinopsis"></textarea>
+                        <button type="submit" class="btn btn-warning w-100">Guardar Serie</button>
+                    </form>
+                </div>
+
+                <div class="card p-3">
+                    <h5>👤 Gestión Usuarios</h5>
+                    <form action="/add-user" method="POST" class="mb-3">
+                        <label>Registrar:</label>
+                        <input type="text" name="username" class="form-control mb-2" placeholder="Username" required>
+                        <input type="email" name="correo" class="form-control mb-2" placeholder="Email">
+                        <button type="submit" class="btn btn-success w-100">Crear Usuario</button>
+                    </form>
+                    <hr>
+                    <form action="/update-user" method="POST">
+                        <label>Actualizar Email:</label>
+                        <input type="text" name="username_target" class="form-control mb-2"
+                            placeholder="Username a buscar" required>
+                        <input type="email" name="new_email" class="form-control mb-2" placeholder="Nuevo Email"
+                            required>
+                        <button type="submit" class="btn btn-dark w-100">Actualizar Datos</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+
+                <div class="card p-3">
+                    <h4>🎬 Catálogo de Películas</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Género</th>
+                                <th>Min</th>
+                                <th>Sinopsis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{range .Peliculas}}
+                            <tr>
+                                <td>{{.ID}}</td>
+                                <td>{{.Nombre}}</td>
+                                <td>{{.Genero}}</td>
+                                <td>{{.Duracion}}</td>
+                                <td>{{.Sinopsis}}</td>
+                            </tr>
+                            {{end}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card p-3">
+                    <h4>📺 Catálogo de Series</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Género</th>
+                                <th>Temp/Caps</th>
+                                <th>Sinopsis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{range .Series}}
+                            <tr>
+                                <td>{{.ID}}</td>
+                                <td>{{.Nombre}}</td>
+                                <td>{{.Genero}}</td>
+                                <td>{{.Temporadas}}T / {{.Capitulos}}C</td>
+                                <td>{{.Sinopsis}}</td>
+                            </tr>
+                            {{end}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card p-3">
+                    <h4>👤 Usuarios Registrados</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{range .Usuarios}}
+                            <tr>
+                                <td>{{.ID}}</td>
+                                <td><strong>{{.Username}}</strong></td>
+                                <td>{{.Correo}}</td>
+                            </tr>
+                            {{end}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
