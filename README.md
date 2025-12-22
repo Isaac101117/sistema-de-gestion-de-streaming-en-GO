@@ -43,28 +43,7 @@ Este proyecto integra los conocimientos adquiridos durante todo el curso:
 
 ---
 
-## ⚙️ Instalación y Ejecución
 
-Sigue estos pasos para correr el proyecto en tu máquina local:
-
-### 1. Clonar el repositorio
-```bash
-git clone [https://github.com/Isaac101117/sistema-de-gestion-de-streaming-en-GO.git](https://github.com/Isaac101117/sistema-de-gestion-de-streaming-en-GO.git)
-cd sistema-de-gestion-de-streaming-en-GO
-2. Instalar dependencias
-Es importante descargar el driver de SQLite:
-
-Bash
-
-go mod tidy
-3. Ejecutar el servidor
-Bash
-
-go run main.go
-4. Abrir en el navegador
-Una vez veas el mensaje 🚀 Servidor corriendo..., abre tu navegador favorito y ve a:
-
-http://localhost:8080
 
 📂 Estructura del Proyecto
 main.go: (Backend) Contiene toda la lógica del servidor, conexión a BD, creación de tablas y controladores (Handlers).
