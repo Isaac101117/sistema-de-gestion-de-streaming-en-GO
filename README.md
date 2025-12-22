@@ -46,6 +46,7 @@ Este proyecto integra los conocimientos adquiridos durante todo el curso:
 
 
 📂 Estructura del Proyecto
+
 main.go: (Backend) Contiene toda la lógica del servidor, conexión a BD, creación de tablas y controladores (Handlers).
 
 index.html: (Frontend) Interfaz gráfica con formularios y tablas dinámicas.
